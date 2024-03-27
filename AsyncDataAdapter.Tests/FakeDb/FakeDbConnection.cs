@@ -176,7 +176,7 @@ namespace AsyncDataAdapter.Tests.FakeDb
                     Thread.Sleep( this.FakeDbDelays.Connect.Value );
                 }
 
-                this.StateValue = ConnectionState.Open; 
+                this.StateValue = ConnectionState.Open;
             }
             else
             {
@@ -198,7 +198,7 @@ namespace AsyncDataAdapter.Tests.FakeDb
                     await Task.Delay( this.FakeDbDelays.Connect.Value ).ConfigureAwait(false);
                 }
 
-                this.StateValue = ConnectionState.Open; 
+                this.StateValue = ConnectionState.Open;
             }
             else if( this.AsyncMode.HasFlag( AsyncMode.BlockAsync ) )
             {
@@ -207,7 +207,7 @@ namespace AsyncDataAdapter.Tests.FakeDb
                     await Task.Delay( this.FakeDbDelays.Connect.Value ).ConfigureAwait(false);
                 }
 
-                this.StateValue = ConnectionState.Open; 
+                this.StateValue = ConnectionState.Open;
             }
             else if( this.AsyncMode.HasFlag( AsyncMode.BaseAsync ) )
             {
@@ -268,6 +268,7 @@ namespace AsyncDataAdapter.Tests.FakeDb
             }
         }
 
+#if NET6_0_OR_GREATER
         protected override async ValueTask<DbTransaction> BeginDbTransactionAsync(IsolationLevel isolationLevel, CancellationToken cancellationToken)
         {
             if( this.AsyncMode.HasFlag( AsyncMode.AwaitAsync ) )
@@ -308,7 +309,8 @@ namespace AsyncDataAdapter.Tests.FakeDb
                 throw new NotSupportedException( "AllowAsync is false." );
             }
         }
+#endif
 
-        #endregion
+#endregion
     }
 }

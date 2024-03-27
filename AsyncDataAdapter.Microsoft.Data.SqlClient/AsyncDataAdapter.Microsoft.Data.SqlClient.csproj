@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net48;net6.0;</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>StrongName.snk.pfx</AssemblyOriginatorKeyFile>
+    <!--<SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>StrongName.snk.pfx</AssemblyOriginatorKeyFile>-->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <NoWarn>1591</NoWarn>
-    
+
     <!-- https://docs.microsoft.com/en-us/nuget/create-packages/symbol-packages-snupkg -->
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -19,14 +19,18 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Jehoel/AsyncDataAdapter/</PackageProjectUrl>
     <Copyright>Microsoft Corporation, Vladimir Kloz &lt;vladimir.kloz@gmail.com&gt;; Jeremy Kruer; Dai Rees;</Copyright>
-    <Version>4.0.0</Version>
+    <Version>5.0.2</Version>
     <Authors>Vladimir Kloz; Jeremy Kruer; Dai Rees;</Authors>
     <Company />
     <Description>Jehoel.AsyncDataAdapter.Microsoft.Data.SqlClient provides an AsyncDataAdapter for Microsoft.Data.SqlClient</Description>
     <PackageTags>DataAdapter DbDataAdapter SqlDataAdapter AsyncDataAdapter AdaDataAdapter AsyncSqlDataAdapter SqlAsyncDataAdapter FillAsync FillSchemaAsync UpdateAsync</PackageTags>
-    <PackageReleaseNotes>4.0.0 - Initial release.</PackageReleaseNotes>
+    <PackageReleaseNotes>
+      4.0.0 - Initial release.
+      5.0.0 - Removing root package dependency on Microsoft.Data.SqlCLient which was meant to have been removed in 4.0.0.
+      5.0.2 - Updated to .Net 6 + Framework48 (Allows Windows Server 2022 + modern Windows 10/11)
+    </PackageReleaseNotes>
     <!-- END NuGet -->
-    
+
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -42,7 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
   </ItemGroup>
 
   <ItemGroup>

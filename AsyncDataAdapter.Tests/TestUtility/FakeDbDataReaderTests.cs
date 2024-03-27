@@ -16,7 +16,9 @@ namespace AsyncDataAdapter.Tests.MetaTests
         [Test]
         public void FakeDbDataReader_Sync_should_behave()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             FakeDbCommand cmd = new FakeDbCommand();
+#pragma warning restore CS0618 // Type or member is obsolete
 
             FakeDbDataReader rdr = new FakeDbDataReader( cmd );
 
@@ -101,7 +103,9 @@ namespace AsyncDataAdapter.Tests.MetaTests
         [Test]
         public async Task FakeDbDataReader_Async_should_behave()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             FakeDbCommand cmd = new FakeDbCommand();
+#pragma warning restore CS0618 // Type or member is obsolete
 
             FakeDbDataReader rdr = new FakeDbDataReader( cmd );
 

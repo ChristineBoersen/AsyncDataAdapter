@@ -38,8 +38,9 @@ namespace AsyncDataAdapter.Tests
 
             var rows = e.GetRows_();
 
-            Assert.AreEqual(1, rows.Length);
-            Assert.AreEqual(dataRow, rows[0]);
+            Assert.That(rows.Length, Is.EqualTo(1));
+            Assert.That(rows[0], Is.EqualTo(dataRow));
+
         }
 
         [Test]
@@ -54,17 +55,18 @@ namespace AsyncDataAdapter.Tests
 
             var row = e.GetRow_(0);
 
-            Assert.AreEqual(dataRow, row);
+            Assert.That(row, Is.EqualTo(dataRow));
+
         }
 
         [Test]
         public void EnsureAdditionalCapacityShouldWork()
         {
             var c = new DataTable().Columns;
-            
+
             Assert.DoesNotThrow(() => c.EnsureAdditionalCapacity_(10));
         }
 
-        
+
     }
 }

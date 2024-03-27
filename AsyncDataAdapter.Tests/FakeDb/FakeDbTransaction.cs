@@ -22,18 +22,20 @@ namespace AsyncDataAdapter.Tests.FakeDb
         {
         }
 
+#if NET6_0_OR_GREATER
         public override Task CommitAsync(CancellationToken cancellationToken = default)
         {
             return Task.CompletedTask;
         }
-
-        public override void Rollback()
-        {
-        }
-
         public override Task RollbackAsync(CancellationToken cancellationToken = default)
         {
             return Task.CompletedTask;
         }
+#endif
+        public override void Rollback()
+        {
+        }
+
+
     }
 }

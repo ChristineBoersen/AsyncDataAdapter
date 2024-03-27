@@ -155,7 +155,7 @@ namespace AsyncDataAdapter.Tests.FakeDb
 
         protected override void SetParameter(string parameterName, DbParameter value)
         {
-            if( value is FakeDbParameter p )
+            if( value is FakeDbParameter pa )
             {
                 var match = this.list
                     .Select( ( p, idx ) => ( p, idx ) )
@@ -163,7 +163,7 @@ namespace AsyncDataAdapter.Tests.FakeDb
 
                 if( match != default )
                 {
-                    this.list[ match.idx ] = p;
+                    this.list[ match.idx ] = pa;
                 }
             }
             else

@@ -13,14 +13,17 @@ namespace AsyncDataAdapter.Tests.FakeDb
         }
 
         public override bool CanCreateDataSourceEnumerator => false;
-
+#if NET6_0_OR_GREATER
         public override bool CanCreateCommandBuilder => true;
-
         public override bool CanCreateDataAdapter => true;
+#endif
+
 
         public override DbCommand CreateCommand()
         {
+#pragma warning disable CS0618 // Type or member is obsolete -
             return new FakeDbCommand();
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         public FakeDbCommand CreateCommand( FakeDbConnection connection, List<TestTable> testTables, FakeDbDelays delays )
