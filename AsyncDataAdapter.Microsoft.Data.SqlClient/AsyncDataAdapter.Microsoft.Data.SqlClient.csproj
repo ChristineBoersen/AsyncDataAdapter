@@ -30,9 +30,17 @@
       5.0.2 - Updated to .Net 6 + Framework48 (Allows Windows Server 2022 + modern Windows 10/11)
     </PackageReleaseNotes>
     <!-- END NuGet -->
-
+    <RootNamespace>$(PackageId)</RootNamespace>
+    <NugetPackageOutputPath>\\hc1-fs1\buildresources\Nuget</NugetPackageOutputPath>
   </PropertyGroup>
-
+  <Target Name="AfterPack_Copy" AfterTargets="Pack">
+    <Message Text="Cleaning previous nuget deployment of project to $(NugetPackageOutputPath)" Importance="high" />
+    <RemoveDir Directories="$(NugetPackageOutputPath)\$(RootNamespace)\$(version)" Condition="'$(ClearOldNugetPackage)' == ''" />
+    <Message Text="Publishing nuget deployment of project '$(PackageOutputAbsolutePath)$(RootNamespace).$(version).nupkg' to $(NugetPackageOutputPath)" Importance="high" />
+    <Exec Command="&quot;C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\nuget.exe&quot; add $(PackageOutputAbsolutePath)$(RootNamespace).$(version).nupkg -source $(NugetPackageOutputPath)">
+    </Exec>
+    <Message Text="Completed nuget deployment of project to $(NugetPackageOutputPath)" Importance="high" />
+  </Target>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>bin\Release</OutputPath>
   </PropertyGroup>
