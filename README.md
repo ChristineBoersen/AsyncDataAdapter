@@ -9,6 +9,15 @@ The implementation is based on source code provided by Microsoft on GitHub.
 <!-- TODO: Set-up Appveyor for this...
 [![Build status](https://ci.appveyor.com/api/projects/status/bw8gl0fp62vmia15/branch/master?svg=true)](https://ci.appveyor.com/project/voloda/asyncdataadapter/branch/master)
 -->
+#### Version 5.0.1
+ * Dependency changes (for all projects)
+   *  .Net Standard and .Net Core dependencies removed since they are deprecated/obsolete
+   *  Added .Net Core 6.0
+   *  Added .Net 4.8
+      * This was left @ 4.8 to support Windows Server 2022 and any version of Windows 10/11 patched in the last couple of years
+
+
+#### Version 5.0
 
 * Tooling: Visual Studio 2019 with .NET Core workload
 * Dependencies:
